@@ -85,17 +85,33 @@ body {
 }
 
 .hero-body {
-  padding: 32px 24px;
+  padding: 12px 24px;
+  @media screen and (min-width: 1024px) {
+    padding: 32px 24px;
+  }
+  .media-content {
+    overflow: visible;
+  }
 }
 
-.title {
+.title,
+.subtitle {
   line-height: 1.3;
 }
 
+.subtitle {
+  margin-bottom: 0;
+}
+
 .logo {
-  $size: 70px;
+  $size: 45px;
   width: $size;
   height: $size;
+  @media screen and (min-width: 768px) {
+    $size: 70px;
+    width: $size;
+    height: $size;
+  }
 }
 
 .card {
@@ -134,4 +150,11 @@ body {
 .tag {
   margin-right: 4px;
   margin-bottom: 2px;
+}
+
+.current-movies {
+  &__list {
+    display: flex;
+    flex-direction: row;
+  }
 }

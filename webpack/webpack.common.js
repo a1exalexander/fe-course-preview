@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const helpers = require('./webpack.helpers');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: helpers.getEntry(),
@@ -113,6 +114,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{ from: path.join(__dirname, helpers.src.STATIC), to: 'public' }]),
-    ...helpers.templatePlugin()
+    ...helpers.templatePlugin(),
+    new FaviconsWebpackPlugin(path.join(__dirname, helpers.src.PUBLIC, 'popcorn.svg'))
   ]
 };
