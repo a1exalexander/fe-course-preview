@@ -8,14 +8,16 @@ document.addEventListener('DOMContentLoaded', event => {
   const cache = new Cache();
 
   const getCurrentMovies = async () => {
-    const movies = await parseCurrentMovies();
-    cache.updateData(movies);
-    render.currentMovies(movies);
+    document.body.classList.add('loading');
+    if (cache.needUpdate()) {
+      const movies = await parseCurrentMovies();
+      cache.updateData(movies);
+      render.currentMovies(movies);
+    } else {
+      render.currentMovies(cache.data.currentMovies);
+    }
+    document.body.classList.remove('loading');
   };
 
-  if (cache.needUpdate()) {
-    getCurrentMovies();
-  } else {
-    render.currentMovies(cache.data.currentMovies);
-  }
+  getCurrentMovies();
 });

@@ -29,6 +29,61 @@ html {
   }
 }
 
+@-webkit-keyframes BGAnimate {
+  0% {
+    background-position: 0% 81%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0% 81%;
+  }
+}
+@-moz-keyframes BGAnimate {
+  0% {
+    background-position: 0% 81%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0% 81%;
+  }
+}
+@keyframes BGAnimate {
+  0% {
+    background-position: 0% 81%;
+  }
+  50% {
+    background-position: 100% 20%;
+  }
+  100% {
+    background-position: 0% 81%;
+  }
+}
+
+.loading {
+  background: linear-gradient(90deg, hsl(48, 100%, 67%), hsl(348, 100%, 61%), hsl(204, 86%, 53%));
+  background-size: 600% 100%;
+  -webkit-animation: BGAnimate 2s ease infinite;
+  -moz-animation: BGAnimate 2s ease infinite;
+  animation: BGAnimate 2s ease infinite;
+}
+
+body {
+  min-height: 100vh;
+  @include flex(stretch, stretch, column);
+}
+
+.footer {
+  background-color: transparent;
+}
+
+.main {
+  flex: 1 1;
+}
+
 .hero-body {
   padding: 32px 24px;
 }
