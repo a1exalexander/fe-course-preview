@@ -6,7 +6,9 @@ const currentMoviesUrl = `${rootUrl}/razdel/uje-na-ekranah.php`;
 
 const parseCurrentMovies = async () => {
   try {
-    const { data: html } = await axios.get(currentMoviesUrl);
+    const { data: html } = await axios.get(
+      `https://cors-anywhere.herokuapp.com/${currentMoviesUrl}`
+    );
     const articles = $('article div.kino', html)
       .map((i, el) => {
         return {
