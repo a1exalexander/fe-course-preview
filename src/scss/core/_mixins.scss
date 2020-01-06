@@ -4,3 +4,9 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin media($type: min-width) {
+  @media screen and ($type: 786px) {
+    @content;
+  }
+}

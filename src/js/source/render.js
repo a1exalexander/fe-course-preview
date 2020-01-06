@@ -5,7 +5,7 @@ const render = {
     const getItem = item => `
     <a href='https://www.google.com/search?q=${
       item.title
-    }' target="_blank" class="column is-6-mobile is-4-desktop is-3-widescreen is-2-fullhd">
+    }' target="_blank" class="movie-column column is-6-mobile is-4-desktop is-3-widescreen is-2-fullhd">
     <div class="card">
   <div class="card-image">
     <figure class="image is-3by4">
@@ -15,10 +15,11 @@ const render = {
   <div class="card-content">
     <div class="media">
       <div class="media-content">
-        <p class="title is-size-5-mobile is-6">${item.title}</p>
+        <p class="title is-6">${item.title}</p>
       </div>
     </div>
-    <div class="content">${getTags(item.type)}</div>
+    <div class="content is-hidden-tablet is-size-7">${item.type}</div>
+    <div class="content is-hidden-mobile">${getTags(item.type)}</div>
   </div>
 </div>
 </a>`;
