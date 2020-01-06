@@ -115,6 +115,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{ from: path.join(__dirname, helpers.src.STATIC), to: 'public' }]),
     ...helpers.templatePlugin(),
-    new FaviconsWebpackPlugin(path.join(__dirname, helpers.src.PUBLIC, 'popcorn.svg'))
+    new FaviconsWebpackPlugin({
+      logo: path.resolve(__dirname, helpers.src.PUBLIC, 'popcorn.svg'),
+      cache: false,
+      outputPath: '/public',
+      prefix: 'kremenchuk-movies/public/'
+    })
   ]
 };
