@@ -3,6 +3,22 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const helpers = require('./webpack.helpers');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const EasySeo = require('webpack-easy-seo');
+
+const seoInst = new EasySeo({
+  // Application Title, which is shown in the tab bar.
+  title: 'Зараз у кіно в Кременчуці',
+  // Application Description, which is shown in search engines and OpenGraph.
+  description: 'Зараз у кіно в Кременчуці',
+  // Your public url, which is used to create the correct links to your images.
+  publicUrl: 'https://a1exalexander.github.io/kremenchuk-movies',
+  // Your thumbnail image, which is used in OpenGraph
+  imagePath: path.resolve(__dirname, helpers.src.ASSETS, 'images', 'thumbnail.png'),
+  // Your webpack build folder
+  buildPath: path.resolve(__dirname, '../dist'),
+  // Path in your build folder to your image.
+  outputPath: '/public/thumbnail.png'
+});
 
 module.exports = {
   entry: helpers.getEntry(),
@@ -114,12 +130,13 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{ from: path.join(__dirname, helpers.src.STATIC), to: 'public' }]),
-    ...helpers.templatePlugin(),
+    ...helpers.templatePlugin(seoInst),
     new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, helpers.src.PUBLIC, 'popcorn.svg'),
-      cache: false,
+      cache: true,
       outputPath: '/public',
       prefix: 'kremenchuk-movies/public/'
-    })
+    }),
+    seoInst
   ]
 };

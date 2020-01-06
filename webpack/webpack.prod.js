@@ -3,8 +3,12 @@ const common = require('./webpack.common.js');
 const ImageminPlugin = require('imagemin-webpack');
 const postcssPresetEnv = require('postcss-preset-env');
 const helpers = require('./webpack.helpers');
+const SitemapWebpackPlugin = require('sitemap-webpack-plugin').default;
+const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 // Uncomment bot line to use JS import CSS
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const paths = ['/'];
 
 module.exports = merge(common, {
   mode: 'production',
@@ -63,6 +67,8 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/style.[hash].css'
-    })
+    }),
+    new RobotstxtPlugin(),
+    new SitemapWebpackPlugin('https://a1exalexander.github.io/kremenchuk-movies', paths)
   ]
 });
