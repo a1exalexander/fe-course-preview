@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', event => {
 
   const getCurrentMovies = async () => {
     document.body.classList.add('loading');
-    console.log(cache);
     if (cache.needUpdate()) {
       const movies = await parseCurrentMovies();
       cache.updateData(movies);
