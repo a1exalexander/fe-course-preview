@@ -5,7 +5,7 @@ const render = {
     const getItem = item => `
     <a href='https://www.google.com/search?q=${
       item.title
-    }' target="_blank" class="movie-column column is-6-mobile is-4-desktop is-3-widescreen is-2-fullhd">
+    }' target="_blank" class="movie-column column is-6-mobile is-4-desktop is-3-widescreen">
     <div class="card">
   <div class="card-image">
     <figure class="image is-3by4">
