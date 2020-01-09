@@ -129,7 +129,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([{ from: path.join(__dirname, helpers.src.STATIC), to: '/' }]),
+    new CopyWebpackPlugin([{ from: path.join(__dirname, helpers.src.STATIC), to: '' }]),
     ...helpers.templatePlugin(seoInst),
     new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, helpers.src.PUBLIC, 'popcorn.svg'),
