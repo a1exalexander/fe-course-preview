@@ -6,15 +6,17 @@ export default class Cache {
       ? [...JSON.parse(localStorage.getItem('galaxy-cache'))]
       : [];
   }
+  _getDate() {
+    return new Date().getHours()
+  }
   updateData = newData => {
     this.data = { ...newData };
-    this.updated = new Date();
+    this.updated = this._getDate();
     localStorage.setItem('galaxy-cache', JSON.stringify(newData));
     localStorage.setItem('galaxy-updated', this.updated);
+    console.log('⚡️Movies updated successfully⚡️')
   };
   needUpdate = () => {
-    const dateNow = new Date();
-    const count = (dateNow - this.updated) / 1000 / 60 / 60 / 24;
-    return !this.updated || count > 0.2;
+    return String(this._getDate()) !== String(this.updated);
   };
 }
